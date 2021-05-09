@@ -5,7 +5,7 @@ SAVEHIST=1000
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/hugo/.zshrc'
+zstyle :compinstall filename '$HOME/.zshrc'
 
 autoload -Uz compinit
 compinit
@@ -63,7 +63,7 @@ alias ll='ls -l'
 
 # >>> gvm >>>
 export PATH=/usr/local/go/bin:$PATH
-[[ -s "/home/hugo/.gvm/scripts/gvm" ]] && source "/home/hugo/.gvm/scripts/gvm"
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 go env -w GOPROXY=https://goproxy.io,direct
 # <<< gvm <<<
 
