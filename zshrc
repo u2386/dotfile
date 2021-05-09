@@ -67,3 +67,5 @@ export PATH=/usr/local/go/bin:$PATH
 go env -w GOPROXY=https://goproxy.io,direct
 # <<< gvm <<<
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

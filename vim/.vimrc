@@ -40,7 +40,7 @@ Plugin 'ambv/black'
 
 " fzf
 Plugin 'junegunn/fzf.vim'
-set rtp+=/usr/local/opt/fzf
+set rtp+=~/.fzf
 
 
 " Add all your plugins here (note older versions of Vundle
