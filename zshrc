@@ -57,8 +57,19 @@ export PATH="$HOME/miniconda3/bin:$PATH"
 # <<< custom <<<
 
 # >>> alias >>>
-alias ls='ls --color'
-alias ll='ls -l'
+case "$OSTYPE" in
+  darwin*)
+      alias ls='ls -G'
+      alias ll='ls -l'
+  ;;
+  linux*)
+    alias ls='ls --color'
+    alias ll='ls -l'
+  ;;
+  dragonfly*|freebsd*|netbsd*|openbsd*)
+    # ...
+  ;;
+esac
 # <<< alias <<<
 
 # >>> gvm >>>
