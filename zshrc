@@ -7,43 +7,43 @@ bindkey -e
 # The following lines were added by compinstall
 zstyle :compinstall filename '$HOME/.zshrc'
 
-autoload -Uz compinit
-compinit
 # End of lines added by compinstall
 
-# >>> zplug >>>
-source ~/.zplug/init.zsh
-
-zplug "junegunn/fzf-bin", \
-       	from:gh-r, \
-       	as:command, \
-       	rename-to:fzf, \
-       	use:"*darwin*amd64*"
-zplug "plugins/z", \
-	from:oh-my-zsh
-zplug "plugins/kubectl", \
-	from:oh-my-zsh
-zplug mafredri/zsh-async, \
-       	from:github
-zplug "sindresorhus/pure", \
-	use:pure.zsh, \
-       	from:github, \
-       	as:theme
-
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
 
-# Then, source plugins and add commands to $PATH
-zplug load
-# <<< zplug <<<
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+### End of Zinit's installer chunk
+
+zinit load zdharma/history-search-multi-word
+
+zinit ice pick"async.zsh" src"pure.zsh"
+zinit light sindresorhus/pure
+
+zinit ice from"gh-r" as"program"
+zinit load junegunn/fzf-bin
+
+zinit load agkozak/zsh-z
+
+zinit wait lucid for \
+    atinit"zicompinit; zicdreplay" \
+        OMZP::colored-man-pages
+
+
+autoload -Uz compinit
+compinit
+zinit cdreplay -q
 
 # >>> theme >>>
-# .zshrc
+
 autoload -U promptinit; promptinit
 
 zstyle :prompt:pure:prompt:success color white
