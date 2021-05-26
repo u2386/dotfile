@@ -80,3 +80,25 @@ go env -w GOPROXY=https://goproxy.io,direct
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+fzf-dirs-widget() {
+  # eval cd $(dirs -v | fzf --height 40% --reverse | cut -b3-)
+  local dir=$(dirs -v | fzf --height ${FZF_TMUX_HEIGHT:-40%} --reverse | cut -b3-)
+  if [[ -z "$dir" ]]; then
+    zle redisplay
+    return 0
+  fi
+  eval cd ${dir}
+  local ret=$?
+  unset dir # ensure this doesn't end up appearing in prompt expansion
+  zle reset-prompt
+  return $ret
+}
+zle     -N    fzf-dirs-widget
+
+# Default ALT-X, For Mac OS: Option-X
+if [[ `uname` == "Darwin" ]]; then
+  bindkey '≈' fzf-dirs-widget
+else
+  bindkey '\ex' fzf-dirs-widget
+fi
