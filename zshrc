@@ -42,6 +42,9 @@ autoload -Uz compinit
 compinit
 zinit cdreplay -q
 
+autoload -U select-word-style
+select-word-style bash
+
 # >>> theme >>>
 
 autoload -U promptinit; promptinit
