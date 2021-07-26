@@ -105,3 +105,9 @@ if [[ `uname` == "Darwin" ]]; then
 else
   bindkey '\ex' fzf-dirs-widget
 fi
+
+
+# >>> final >>>
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+        tmux attach -t default || tmux new -s default
+fi
