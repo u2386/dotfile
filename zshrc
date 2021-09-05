@@ -60,11 +60,14 @@ zstyle :prompt:pure:host color '#888888'
 
 # >>> custom >>>
 export PATH="$HOME/miniconda3/bin:$PATH"
+export RUSTUP_UPDATE_ROOT="https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup"
+export RUSTUP_DIST_SERVER="https://mirrors.tuna.tsinghua.edu.cn/rustup"
 # <<< custom <<<
 
 # >>> alias >>>
 case "$OSTYPE" in
   darwin*)
+      export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
       alias ls='ls -G'
       alias ll='ls -l'
   ;;
