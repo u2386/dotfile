@@ -26,8 +26,6 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
 
-zinit load zdharma/history-search-multi-word
-
 zinit ice pick"async.zsh" src"pure.zsh"
 zinit light sindresorhus/pure
 
@@ -59,7 +57,6 @@ zstyle :prompt:pure:host color '#888888'
 # <<< theme <<<
 
 # >>> custom >>>
-export PATH="$HOME/miniconda3/bin:$PATH"
 export RUSTUP_UPDATE_ROOT="https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup"
 export RUSTUP_DIST_SERVER="https://mirrors.tuna.tsinghua.edu.cn/rustup"
 # <<< custom <<<
@@ -117,3 +114,20 @@ fi
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
         tmux attach -t default || tmux new -s default
 fi
+
+# >>> conda initialize >>>
+export PATH="/Users/hugo/mambaforge/bin:$PATH"
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/hugo/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/hugo/mambaforge/etc/profile.d/conda.sh" ]; then
+        . "/Users/hugo/mambaforge/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/hugo/mambaforge/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
