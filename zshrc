@@ -14,9 +14,9 @@ zstyle :compinstall filename '$HOME/.zshrc'
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
     command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.zinit/bin" && \
         print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
         print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
@@ -34,14 +34,12 @@ zinit load junegunn/fzf-bin
 
 zinit load agkozak/zsh-z
 
-zinit wait lucid for \
-    atinit"zicompinit; zicdreplay" \
-        OMZP::colored-man-pages
-
+zinit snippet OMZP::kubectl
 
 autoload -Uz compinit
 compinit
 zinit cdreplay -q
+zinit cdlist > /dev/null # look at gathered compdefs
 
 autoload -U select-word-style
 select-word-style bash
