@@ -30,7 +30,7 @@ zinit ice pick"async.zsh" src"pure.zsh"
 zinit light sindresorhus/pure
 
 zinit ice from"gh-r" as"program"
-zinit load junegunn/fzf-bin
+zinit load junegunn/fzf
 
 zinit load agkozak/zsh-z
 
@@ -55,8 +55,9 @@ zstyle :prompt:pure:host color '#888888'
 # <<< theme <<<
 
 # >>> custom >>>
-export RUSTUP_UPDATE_ROOT="https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup"
-export RUSTUP_DIST_SERVER="https://mirrors.tuna.tsinghua.edu.cn/rustup"
+export RUSTUP_DIST_SERVER=https://mirror.sjtu.edu.cn/rust-static
+export RUSTUP_UPDATE_ROOT=https://mirror.sjtu.edu.cn/rust-static/rustup
+export HOMEBREW_NO_AUTO_UPDATE=1
 # <<< custom <<<
 
 # >>> alias >>>
@@ -129,3 +130,11 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# <<< llvm <<<
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+# >>> llvm >>>
+
+# <<< wasmedge <<<
+source $HOME/.wasmedge/env
+# >>> wasmedge >>>
+. "/Users/hugo/.wasmedge/env"
